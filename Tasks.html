@@ -1,0 +1,76 @@
+<head>
+  <title>Tasks</title>
+</head>
+
+<body>
+  {{> Main}}
+</body>
+
+<template name="Main">
+	{{#if SignedIn}}
+		{{> Tasks}}
+	{{else}}
+		{{> Login}}
+	{{/if}}
+</template>
+
+<template name="Login">
+	<div id="Login">
+	  <div id="LoginTop" class="Clear">
+	    <input type="text" id="Username">
+	    <input type="password" id="Password">
+	  </div>
+	  <div id="ButtonRow" class="Clear">
+	    <div id="LoginBButton" class="Clear"></div>
+	    <div id="LoginButton" class="Clear"></div>
+	    <div id="LoginAButton" class="Clear"></div>
+	    <div id="PreloadButton"></div>
+	  </div>
+	  <div id="LoginBottom" class="Clear"></div>
+	</div>
+</template>
+
+<template name="Tasks">
+	<div id="Logo"></div>
+	<div id="Calendar" class="Clear">
+		<div id="CalendarTop" class="Clear">
+			<div id="DateStr">{{DateString}}</div>
+			<div id="LastMonth"></div>
+			<div id="NextMonth"></div>
+		</div>
+		<div id="CalendarDays" class="Clear">
+			<div id="NumberArea" class="Clear">
+				{{#each GetDays}}
+					<div class="Day{{Class}}">{{Number}}</div>
+				{{/each}}
+			</div>
+		</div>
+		<div id="CalendarBottom" class="Clear"></div>
+	</div>
+	<div id="Todos" class='Clear'>
+		<div id="TodosTop" class='Clear'>
+			<div id="TodosButton"></div>
+			<div id="TitleDate">{{DayString}}</div>
+			<div id="Preloader"></div>
+		</div>
+		{{#each TasksForDate}}
+			<div class="TodosRow Clear">
+			<div class="Close"></div>
+		{{#if this.Done}}
+			<div class="Checked" onclick="Check('{{this._id}}', true);"></div>
+			<div class="Task Done">
+		{{else}}
+			<div class="Unchecked" onclick="Check('{{this._id}}', false);"></div>
+			<div class="Task">
+		{{/if}}
+		{{#if Editing}}
+			<input id="TodosEdit" value="{{Name}}" autofocus="autofocus"></div>
+		{{else}}
+			<span class="RowText">{{Name}}</span></div>	
+		{{/if}}
+		</div>
+		{{/each}}
+		<div id="TodosBottom" class='Clear'>
+		</div>
+	</div>
+</template>
