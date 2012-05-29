@@ -1,4 +1,7 @@
-Meteor-Schedule-Example
-=======================
+<h1>Schedule Manager Example in Meteor.js</h1>
 
-An Example Meteor.js Application
+This is an example which I made to demonstrate Meteor.
+
+You can view this site at <a href="http://schedule.meteor.com">schedule.meteor.com</a>
+
+Special Thanks to Damian from <a href="http://watracz.com">watracz.com</a> for the graphics.
