@@ -9,4 +9,4 @@ Special Thanks to Damian from <a href="http://watracz.com">watracz.com</a> for t
 
 This package uses custom database publish rules, so you have to remove the autopublish plugin. You can do this by typing:
 
-meteor remove autopublish
+<pre>meteor remove autopublish</pre>
