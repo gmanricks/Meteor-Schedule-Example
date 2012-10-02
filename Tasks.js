@@ -77,7 +77,10 @@ if (Meteor.is_client) {
 		'click #LastMonth': function(){ adjustMonth(-1); },
 		'focus #TodosEdit':function(){ document.getElementById("TodosEdit").select(); },
 		'blur #TodosEdit':function(){
-			Tasks.update({'_id': Session.get("Editing")}, {$set : {'Name': document.getElementById("TodosEdit").value}}); 
+			var tname = document.getElementById("TodosEdit").value;
+			if(tname == "")
+				tname = "New Task (Click To Edit)";
+			Tasks.update({'_id': Session.get("Editing")}, {$set : {'Name': tname}}); 
 			Session.set("Editing");
 		},
 		'click .DayClick':function(){
